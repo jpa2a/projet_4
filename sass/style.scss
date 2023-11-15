@@ -41,6 +41,7 @@ header{
     .localisation{
         display: flex;
         align-items: center;
+        align-content: center;
         justify-content: center;
         height: 3.12rem;
          background-color: #eaeaea;
@@ -49,13 +50,14 @@ header{
         z-index: 1;
         & svg{
             margin:1.06rem;
+            margin-left: 0px;
         }
     }
 }
 
 /** zone d'acceuil + bouton pour explorer les restaurants **/
 
-.explore__content{
+.explore__content, .valid{
     background-color: $backgroundColor;
     display: flex;
     flex-direction: column;
@@ -65,7 +67,7 @@ header{
     margin-bottom: 3rem;
     padding-inline: 10%;
     padding-bottom: 4rem;
-    & a{
+    & a, span{
         padding-block: 0.81rem;
         padding-inline: 1.17rem;
         
@@ -78,6 +80,13 @@ header{
         font-size: 1rem;
         align-items: center;
         justify-content: center;
+        transition: all 500ms;
+        &:hover {
+            opacity: 0.85;
+            //box-shadow:0px 4px 10px 3px rgba(0, 0, 0, 0.25); 
+            box-shadow:0px 4px 15px 0px rgba(0, 0, 0, 0.35); 
+            
+        }
     }
     & h1{
         font-size: 1.5rem;
@@ -120,16 +129,28 @@ header{
             gap: 2.28rem;  
               
         }
+        @media (min-width: 800px) {
+            flex-direction: row; 
+            gap: 2.28rem;  
+              
+        }
         &__step{
             position: relative;
             display: flex;
             justify-content: left;
             align-items: center;
             height: 4.52rem;
-            width: 20.15rem;
+            padding-right: 1rem;
+            //width: 20.15rem;
+            width: min(95%, 20.15rem);
             box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15); 
             border-radius: 1.25rem;
             margin-bottom: 1.56rem;
+            @media (min-width: 800px) {
+                width: max(30%, 20.15rem);
+                margin-bottom: 3.12rem;
+                  
+            }
             & svg{
                 padding-inline: 1.69rem;
             }
@@ -194,6 +215,17 @@ header{
     flex-direction: column;
     width: 100%;
     margin: 20px;
+    position: relative;
+    &--new{
+        position: absolute;
+        background-color: #99E2D0;
+        color: #008766;
+        padding-block: 0.44rem; 
+        padding-inline: 0.62rem;
+        top:0.81rem;
+        right:1.08rem;
+        border-radius: 3px;
+    }
     @media (min-width: 1100px) {
         width: 48%;
         margin: 0;
@@ -206,13 +238,13 @@ header{
         object-fit: cover;
         width: 100%;
         height: 14.43rem;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
+        border-top-left-radius: 0.93rem;
+        border-top-right-radius: 0.93rem;
     }
     &__content{
         background-color: white;
         height: 4.81rem;
-        border-radius: 20px;
+        border-radius: 0.93rem;
         padding: 0.81rem;
         padding-right: 1.56rem;
         display: flex;
@@ -283,9 +315,319 @@ footer{
         font-size: 1rem;
         font-weight: 500;
     }
+    & a{
+        color: white;
+    }
     
 }
 
-/*svg path {
-    fill: red;
- }*/
+
+/* Fiches restaurant */
+
+.img-resto{
+    width: 100%;
+    height: 17rem;
+    & img{
+        object-fit: cover;
+        width: 100%;
+        height: 120%;
+    }
+}
+
+
+.menu{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+.menu__list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //padding-inline: 1.08rem;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+    background-color: $backgroundColor;
+    border-top-right-radius: 4rem;
+    border-top-left-radius: 4rem;
+    width: 80%;
+    @media (max-width: 600px) {
+       width: 100%;
+      }
+}
+.menu__list__titre{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 90%;
+    
+    & svg{
+        padding: 1.5rem;
+    }
+    & h1{
+        font-family: "Shrikhand" ;
+        font-size: 1.75rem;
+        font-weight: 400;
+        @media (max-width: 600px) {
+            font-size: 1.60rem;
+           }
+    }
+}
+
+.menu__list__titre2{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-content: left;
+    align-items: left;
+    margin-top: 1.5rem;
+    width: 60%;
+    @media (max-width: 600px) {
+        width: 90%;
+       }
+    & h2{
+        font-size: 1rem;
+        font-weight: 300;
+    }
+    &__line{
+        background-color: $thirdColor;
+        width: 2.5rem;
+        height: 0.18rem;
+    }
+}
+.menu__list__plats{
+    width: 60%;
+    position: relative;
+    @media (max-width: 600px) {
+        width: 90%;
+       }
+}
+
+/* plats */
+
+.plat{
+    position: relative;
+    z-index: 1;
+    background-color: white;
+    width: 100%;
+    margin-block: 0.75rem;
+    border-radius: 0.94rem;
+    box-shadow: 0px 4.01149px 15.0431px 0px rgba(0, 0, 0, 0.10); 
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    height: 4.5rem;
+    transition: all 500ms;
+    &__prix{
+        font-size: 0.94;
+        font-weight: 700;
+        &__euro{
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            padding-inline: 0.94rem;
+            padding-bottom: 0.94rem;
+       
+        }
+        &__valid{
+            display: flex;
+            flex-direction: column;
+            justify-content:flex-start;
+        }
+  }
+}
+  .plat__titre{
+    width: auto;
+    transform-origin: left;
+    padding-block: 0.94rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all 500ms;
+    padding-left: 0.94rem;
+    /*@media (max-width: 500px) {
+        width: 282px;
+    }*/
+    & h3{
+        font-size: 1.125rem;
+        margin: 0;
+        margin-bottom: 0.31rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    & p{
+        font-size: 0.94rem;
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+  }
+  .plat__prix{
+    //width: 115px;
+    width: 55px;
+    display: flex;
+    transition: all 500ms;
+    //transform: translateX(57px);
+    transform: translateX(0);
+  }
+  
+  .plat:hover .plat__prix{
+    transform: translateX(-67px);
+  }
+  @media (max-width: 850px) {
+    .plat:hover .plat__titre{
+        width: 65%;
+    }
+  }
+  @media (max-width: 700px) {
+    .plat:hover .plat__titre{
+        width: 60%;
+    }
+  }
+  @media (max-width: 650px) {
+    .plat:hover .plat__titre{
+        width: 45%;
+    }
+  }
+  @media (max-width: 600px) {
+    .plat:hover .plat__titre{
+
+        width: 70%;
+    }
+  }
+  @media (max-width: 450px) {
+    .plat:hover .plat__titre{
+
+        width: 60%;
+    }
+  }
+  @media (max-width: 350px) {
+    .plat:hover .plat__titre{
+
+        width: 50%;
+    }
+  }
+
+
+
+  /* bouton valider commande */
+
+  .valid {
+
+    margin: 2.5rem;
+    & svg{
+        object-fit: cover;
+    }
+    & span{
+        cursor: pointer;
+        padding-inline: 3rem;
+    }
+    &:active + .plat + .plat-blue{
+        
+            background-color: black;
+        
+    }
+  }
+
+
+  /* Bouton like */
+
+input{
+    display: none;
+} 
+label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  padding: 1.5rem;
+  padding-right: 0;
+  padding-top: 1.68rem;
+
+}
+
+.like ~ label  #signtwoo{
+        display: none;
+}
+
+.like:checked ~ label  #signone{
+        display: none;
+}
+.like:checked ~ label  #signtwoo{
+        display: block;
+}
+
+/* PREMIER */
+/*
+.likes--one ~ .likes--one--label  #likes--one--yes{
+    display: none;
+}
+
+.likes--one:checked ~ .likes--one--label  #likes--one--no{
+    display: none;
+}
+.likes--one:checked ~ .likes--one--label  #likes--one--yes{
+    display: block;
+}
+*/
+
+.likes--one--label .not{
+    display: none;
+}
+
+.likes--one:checked ~ .likes--one--label .yes{
+    display: none;
+}
+.likes--one:checked ~ .likes--one--label .not{
+    display: block;
+}
+
+/* SECOND */
+
+.like--two ~ .like--two--label  #like--two--yes{
+    display: none;
+}
+
+.like--two:checked ~ .like--two--label  #like--two--no{
+    display: none;
+}
+.like--two:checked ~ .like--two--label  #like--two--yes{
+    display: block;
+}
+
+
+/* TROISIEME */
+
+.like--three ~ .like--three--label  #like--three--yes{
+    display: none;
+}
+
+.like--three:checked ~ .like--three--label  #like--three--no{
+    display: none;
+}
+.like--three:checked ~ .like--three--label  #like--three--yes{
+    display: block;
+}
+
+/* QUATRIEME */ 
+
+.like--four ~ .like--four--label  #like--four--yes{
+    display: none;
+}
+
+.like--four:checked ~ .like--four--label  #like--four--no{
+    display: none;
+}
+.like--four:checked ~ .like--four--label  #like--four--yes{
+    display: block;
+}
