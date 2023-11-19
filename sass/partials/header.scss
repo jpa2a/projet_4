@@ -1,0 +1,57 @@
+$primaryColor: #9356DC ;
+$secondaryColor: #FF79DA ;
+$thirdColor: #99E2D0 ;
+$backgroundColor: #f6f6f6;
+$backgroundColor2: #353535;
+
+/** HEADER CONTENANT LE LOGO + LA LOCALISATION ***/
+
+
+ /* bouton retour de la partie restaurant */
+.return-home{
+    position: absolute;
+    z-index: 5;
+    top: 35%;
+    margin-block: auto;
+    left: 20px;
+    font-size: 1.2rem;
+    color: black;
+}
+/* -------------------------------------   */
+
+header{
+    position: relative;
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 0.88rem;
+        height: 3.93rem;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); 
+        position: relative;
+        z-index: 2;
+        & img{
+            height: 2.75rem;
+            width: 10.12rem;
+        }
+        @media (min-width: 768px) {
+            height: 6rem;
+            padding-top: 0;
+        }
+    }
+    .localisation{
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        height: 3.12rem;
+         background-color: #eaeaea;
+        color: #353535;
+        position: relative;
+        z-index: 1;
+        & svg{
+            margin:1.06rem;
+            margin-left: 0px;
+        }
+    }
+}

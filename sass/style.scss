@@ -1,10 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Shrikhand&display=swap');
 
 $primaryColor: #9356DC ;
 $secondaryColor: #FF79DA ;
 $thirdColor: #99E2D0 ;
 $backgroundColor: #f6f6f6;
 $backgroundColor2: #353535;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Shrikhand&display=swap');
+
+@import "partials/main";
+@import "partials/cards";
+@import "partials/header";
+@import "partials/footer";
+@import "partials/menu";
+
+
 
 * {
 	font-family: "Roboto";
@@ -21,613 +30,122 @@ a{
 
 }
 
+/* LOADER */
 
-/** HEADER CONTENANT LE LOGO + LA LOCALISATION ***/
-
-header{
-    .logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 3.93rem;
-        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15); 
-        position: relative;
-        z-index: 2;
-        & img{
-            height: 2.75rem;
-            width: 10.12rem;
-        }
-    }
-    .localisation{
-        display: flex;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-        height: 3.12rem;
-         background-color: #eaeaea;
-        color: #353535;
-        position: relative;
-        z-index: 1;
-        & svg{
-            margin:1.06rem;
-            margin-left: 0px;
-        }
-    }
-}
-
-/** zone d'acceuil + bouton pour explorer les restaurants **/
-
-.explore__content, .valid{
-    background-color: $backgroundColor;
+  .loader {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
-    align-content: center;
-    text-align: center;
+    align-items: center;
     justify-content: center;
-    margin-bottom: 3rem;
-    padding-inline: 10%;
-    padding-bottom: 4rem;
-    & a, span{
-        padding-block: 0.81rem;
-        padding-inline: 1.17rem;
-        
-        border: none;
-        color: white;
-        background: linear-gradient(193deg, $primaryColor -11.44%, $secondaryColor 123.93%);
-        box-shadow:0px 4px 10px 0px rgba(0, 0, 0, 0.25); 
-        border-radius: 40px;
-        font-weight: 500;
-        font-size: 1rem;
-        align-items: center;
-        justify-content: center;
-        transition: all 500ms;
-        &:hover {
-            opacity: 0.85;
-            //box-shadow:0px 4px 10px 3px rgba(0, 0, 0, 0.25); 
-            box-shadow:0px 4px 15px 0px rgba(0, 0, 0, 0.35); 
-            
-        }
-    }
-    & h1{
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-top: 2.44rem;
-    }
-    & p{
-        margin:0px;
-        margin-bottom: 3rem;
-        font-size: 1.125rem;
-        font-weight: 300;
-
-    }
+    background: white;
+    animation: loaderhide 1s 3s forwards;
 }
-
-/* guide de fonctionnement du site */
-
-
-.guide{
-    padding-inline: 10%;
-    @media (min-width: 1100px) {
-        
-    }
-    &__title{
-        display: flex;
-        width: 20.15rem;
-        justify-content: left;
-        @media (min-width: 1100px) {
-            grid-column-start: 1;
-            grid-column-end: 4;
-        }
-    }
-    &__list{
-        display: flex;
-        flex-direction:column;
-        align-items: left;
-        justify-content:space-between;
-        @media (min-width: 1100px) {
-            flex-direction: row; 
-            gap: 2.28rem;  
-              
-        }
-        @media (min-width: 800px) {
-            flex-direction: row; 
-            gap: 2.28rem;  
-              
-        }
-        &__step{
-            position: relative;
-            display: flex;
-            justify-content: left;
-            align-items: center;
-            height: 4.52rem;
-            padding-right: 1rem;
-            //width: 20.15rem;
-            width: min(95%, 20.15rem);
-            box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15); 
-            border-radius: 1.25rem;
-            margin-bottom: 1.56rem;
-            @media (min-width: 800px) {
-                width: max(30%, 20.15rem);
-                margin-bottom: 3.12rem;
-                  
-            }
-            & svg{
-                padding-inline: 1.69rem;
-            }
-            & h3{
-                margin: 0px;
-                font-size: 1rem;
-                font-weight: 500;
-            }
-            & .number{
-                display: flex;
-                position: absolute;
-                left: -0.75rem;
-                background-color: $primaryColor;
-                color: white;
-                height: 1.5rem;
-                width: 1.5rem;
-                border-radius: 50%;
-                align-items: center;
-                justify-content: center;
-                align-content: center;
-                font-size: 0.88rem;
-            }
-        }
+    .loader::after{
+        content: "";
+        width: 120px;
+        height: 120px;
+        border: 16px solid $backgroundColor;
+        border-top: 16px solid $primaryColor;
+        border-radius: 50%;
+        animation: spin 3s ease 1 forwards;
     }
     
-}
-
-/* liste des restaurants */
-
-.restaurants{
-   background-color: $backgroundColor;
-   padding-inline: 10%;
-   &__container{
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        align-items: left;
-        &__title{
-            display: flex;
-            width: 100%;
-        }
-        &__list{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 4.15rem;
-            @media (min-width: 1100px) {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                margin-bottom: 1.88rem;
-            }
-        }
-
-   }
-
-}
-
-.card{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 20px;
-    position: relative;
-    &--new{
-        position: absolute;
-        background-color: #99E2D0;
-        color: #008766;
-        padding-block: 0.44rem; 
-        padding-inline: 0.62rem;
-        top:0.81rem;
-        right:1.08rem;
-        border-radius: 3px;
-    }
-    @media (min-width: 1100px) {
-        width: 48%;
-        margin: 0;
-        margin-bottom: 20px;
-    }
-    & a{
-        color: black;
-    }
-    & img{
-        object-fit: cover;
-        width: 100%;
-        height: 14.43rem;
-        border-top-left-radius: 0.93rem;
-        border-top-right-radius: 0.93rem;
-    }
-    &__content{
-        background-color: white;
-        height: 4.81rem;
-        border-radius: 0.93rem;
-        padding: 0.81rem;
-        padding-right: 1.56rem;
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        justify-content:space-between;
-
-        &__text{
-            display: flex;
-            flex-direction: column;
-            & h2{
-                margin-block: 0.31rem;
-                font-size: 1.125rem;
-                font-weight: 700;
-                
-            }
-            & p{
-                margin-block: 0px;
-                font-size: 1.06rem;
-                font-weight: 300;
-            }
-        }
-        &__like{
-            display: flex;
-            align-items: center;
-        }
-    }
-}
-
-
-footer{
-    padding-block: 1.38rem;
-    padding-inline: 10%;
-    background-color: $backgroundColor2;
-    color: white;
-    @media (min-width: 1100px) {
-        position: relative;
-        p{
-            display: inline-block;
-            margin-inline: 10px;
-        }
-
-        .footer__logo{
-            position: absolute;
-            Right: 40px;
-        }
-        
-       
-        .footer__links{
-            display: flex;
-            flex-direction: row;
-            justify-content:right;
-            margin-right: 50px;
-           
-         
-        }
-
-    }
-    & h3{
-        font-family: "Shrikhand" ;
-        font-size: 1.125rem;
-        font-weight: 400;
-    }
-    & svg{
-        margin-right: 0.69rem;
-    }
-    & p{
-        font-size: 1rem;
-        font-weight: 500;
-    }
-    & a{
-        color: white;
-    }
-    
-}
-
-
-/* Fiches restaurant */
-
-.img-resto{
-    width: 100%;
-    height: 17rem;
-    & img{
-        object-fit: cover;
-        width: 100%;
-        height: 120%;
-    }
-}
-
-
-.menu{
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-}
-.menu__list{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    //padding-inline: 1.08rem;
-    padding-top: 2rem;
-    padding-bottom: 5rem;
-    background-color: $backgroundColor;
-    border-top-right-radius: 4rem;
-    border-top-left-radius: 4rem;
-    width: 80%;
-    @media (max-width: 600px) {
-       width: 100%;
-      }
-}
-.menu__list__titre{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    width: 90%;
-    
-    & svg{
-        padding: 1.5rem;
-    }
-    & h1{
-        font-family: "Shrikhand" ;
-        font-size: 1.75rem;
-        font-weight: 400;
-        @media (max-width: 600px) {
-            font-size: 1.60rem;
-           }
-    }
-}
-
-.menu__list__titre2{
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-content: left;
-    align-items: left;
-    margin-top: 1.5rem;
-    width: 60%;
-    @media (max-width: 600px) {
-        width: 90%;
-       }
-    & h2{
-        font-size: 1rem;
-        font-weight: 300;
-    }
-    &__line{
-        background-color: $thirdColor;
-        width: 2.5rem;
-        height: 0.18rem;
-    }
-}
-.menu__list__plats{
-    width: 60%;
-    position: relative;
-    @media (max-width: 600px) {
-        width: 90%;
-       }
-}
-
-/* plats */
-
-.plat{
-    position: relative;
-    z-index: 1;
-    background-color: white;
-    width: 100%;
-    margin-block: 0.75rem;
-    border-radius: 0.94rem;
-    box-shadow: 0px 4.01149px 15.0431px 0px rgba(0, 0, 0, 0.10); 
-    display: flex;
-    justify-content: space-between;
-    overflow: hidden;
-    height: 4.5rem;
-    transition: all 500ms;
-    &__prix{
-        font-size: 0.94;
-        font-weight: 700;
-        &__euro{
-            display: flex;
-            flex-direction: column;
-            justify-content: end;
-            padding-inline: 0.94rem;
-            padding-bottom: 0.94rem;
-       
-        }
-        &__valid{
-            display: flex;
-            flex-direction: column;
-            justify-content:flex-start;
-        }
-  }
-}
-  .plat__titre{
-    width: auto;
-    transform-origin: left;
-    padding-block: 0.94rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    transition: all 500ms;
-    padding-left: 0.94rem;
-    /*@media (max-width: 500px) {
-        width: 282px;
-    }*/
-    & h3{
-        font-size: 1.125rem;
-        margin: 0;
-        margin-bottom: 0.31rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-    & p{
-        font-size: 0.94rem;
-        margin: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-  }
-  .plat__prix{
-    //width: 115px;
-    width: 55px;
-    display: flex;
-    transition: all 500ms;
-    //transform: translateX(57px);
-    transform: translateX(0);
-  }
+ 
   
-  .plat:hover .plat__prix{
-    transform: translateX(-67px);
+  @keyframes loaderhide {
+    0% {
+        opacity: 1;
+        }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        }
   }
-  @media (max-width: 850px) {
-    .plat:hover .plat__titre{
-        width: 65%;
+  @keyframes spin {
+    0% {
+         transform: rotate(0deg); 
+        }
+
+    50%{
+        transform: rotate(360deg);
     }
+
+    100% {
+        transform: rotate(720deg); 
+        }
   }
-  @media (max-width: 700px) {
-    .plat:hover .plat__titre{
-        width: 60%;
-    }
-  }
-  @media (max-width: 650px) {
-    .plat:hover .plat__titre{
-        width: 45%;
-    }
-  }
-  @media (max-width: 600px) {
-    .plat:hover .plat__titre{
-
-        width: 70%;
-    }
-  }
-  @media (max-width: 450px) {
-    .plat:hover .plat__titre{
-
-        width: 60%;
-    }
-  }
-  @media (max-width: 350px) {
-    .plat:hover .plat__titre{
-
-        width: 50%;
-    }
-  }
-
-
-
-  /* bouton valider commande */
-
-  .valid {
-
-    margin: 2.5rem;
-    & svg{
-        object-fit: cover;
-    }
-    & span{
-        cursor: pointer;
-        padding-inline: 3rem;
-    }
-    &:active + .plat + .plat-blue{
-        
-            background-color: black;
-        
-    }
-  }
-
 
   /* Bouton like */
 
-input{
-    display: none;
-} 
-label {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  padding: 1.5rem;
-  padding-right: 0;
-  padding-top: 1.68rem;
-
+  .heart--liked{
+    font-size: 25px;
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(193deg, #9356DC -11.44%, #FF79DA 123.93%);
 }
-
-.like ~ label  #signtwoo{
-        display: none;
+.heart--notliked{
+    font-size: 25px;
+    font-weight: 100;
 }
-
-.like:checked ~ label  #signone{
-        display: none;
+.heart{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 20px;
 }
-.like:checked ~ label  #signtwoo{
-        display: block;
+.heart:hover .liked{
+    animation: heart--liked 200ms both;
 }
-
-/* PREMIER */
-/*
-.likes--one ~ .likes--one--label  #likes--one--yes{
-    display: none;
+.heart .liked{
+    animation: heart--notliked 200ms both;
 }
-
-.likes--one:checked ~ .likes--one--label  #likes--one--no{
-    display: none;
-}
-.likes--one:checked ~ .likes--one--label  #likes--one--yes{
-    display: block;
-}
-*/
-
-.likes--one--label .not{
-    display: none;
-}
-
-.likes--one:checked ~ .likes--one--label .yes{
-    display: none;
-}
-.likes--one:checked ~ .likes--one--label .not{
-    display: block;
-}
-
-/* SECOND */
-
-.like--two ~ .like--two--label  #like--two--yes{
-    display: none;
-}
-
-.like--two:checked ~ .like--two--label  #like--two--no{
-    display: none;
-}
-.like--two:checked ~ .like--two--label  #like--two--yes{
-    display: block;
+.heart:hover .notliked{
+    animation: heart--notliked 200ms both;
 }
 
 
-/* TROISIEME */
+.notliked{
+    position: absolute;
+    z-index: 3;
+}
+.liked{
+   position: absolute;
+    z-index: 4;
+    opacity: 0;
 
-.like--three ~ .like--three--label  #like--three--yes{
-    display: none;
+}
+@keyframes heart--liked {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        scale : 1.2;
+    }
+    100%{
+        scale: 1;
+        opacity: 1;
+    }
 }
 
-.like--three:checked ~ .like--three--label  #like--three--no{
-    display: none;
-}
-.like--three:checked ~ .like--three--label  #like--three--yes{
-    display: block;
-}
-
-/* QUATRIEME */ 
-
-.like--four ~ .like--four--label  #like--four--yes{
-    display: none;
-}
-
-.like--four:checked ~ .like--four--label  #like--four--no{
-    display: none;
-}
-.like--four:checked ~ .like--four--label  #like--four--yes{
-    display: block;
+@keyframes heart--notliked {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+        scale : 0.8;
+    }
+    100%{
+        scale: 0.3;
+        opacity: 0;
+    }
 }
