@@ -49,9 +49,10 @@ header{
         color: #353535;
         position: relative;
         z-index: 1;
-        & svg{
+        & .fa-location-dot{
             margin:1.06rem;
             margin-left: 0px;
+            color: $backgroundColor2;
         }
     }
 }

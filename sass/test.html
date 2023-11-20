@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" >
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .fa-solid{
+            font-size: 16px;
+            color: transparent;
+            background-clip: text;
+            background-image: linear-gradient(193deg, #9356DC -11.44%, #FF79DA 123.93%);
+        }
+        .fa-regular{
+            font-size: 16px;
+        }
+        .heart{
+            position: relative;
+        }
+        .heart:hover .liked{
+            animation: heart--liked 200ms both;
+        }
+        .heart .liked{
+            animation: heart--notliked 200ms both;
+        }
+        
+
+        .notliked{
+            position: absolute;
+            z-index: 1;
+        }
+        .liked{
+            position: absolute;
+            z-index: 2;
+            opacity: 0;
+        
+        }
+
+        @keyframes heart--liked {
+            0% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+                scale : 1.2;
+            }
+            100%{
+                scale: 1;
+                opacity: 1;
+            }
+        }
+
+        @keyframes heart--notliked {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+                scale : 0.8;
+            }
+            100%{
+                scale: 0.3;
+                opacity: 0;
+            }
+        }
+    </style>
+    <div class="heart">
+        <div class="notliked"><i class="fa-regular fa-heart"></i></div>
+        <div class="liked"><i class="fa-solid fa-heart"></i></div>
+    </div>
+</body>
+</html>

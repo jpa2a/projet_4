@@ -45,7 +45,8 @@ header .localisation {
   position: relative;
   z-index: 1;
 }
-header .localisation svg {
+header .localisation .fa-location-dot {
   margin: 1.06rem;
   margin-left: 0px;
+  color: #353535;
 }/*# sourceMappingURL=header.css.map */
