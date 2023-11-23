@@ -54,9 +54,6 @@
     margin-bottom: 20px;
   }
 }
-.card a {
-  color: black;
-}
 .card img {
   -o-object-fit: cover;
      object-fit: cover;

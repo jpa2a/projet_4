@@ -41,7 +41,7 @@
      border-radius: 0.93rem;
      &--new{
          position: absolute;
-         background-color: #99E2D0;
+         background-color: $thirdColor;
          color: #008766;
          padding-block: 0.44rem; 
          padding-inline: 0.62rem;
@@ -53,9 +53,6 @@
          width: 48%;
          margin: 0;
          margin-bottom: 20px;
-     }
-     & a{
-         color: black;
      }
      & img{
          object-fit: cover;
