@@ -444,15 +444,14 @@ footer a {
   justify-content: space-between;
   overflow: hidden;
   height: 4.5rem;
-  transition: all 500ms;
+  transition: width 500ms;
 }
 .plat__prix {
   font-size: 0.94rem;
   font-weight: 700;
-  width: 121px;
+  width: 55px;
   display: flex;
-  transition: all 500ms;
-  transform: translateX(66px);
+  transition: width 500ms;
 }
 .plat__prix__euro {
   display: flex;
@@ -472,6 +471,7 @@ footer a {
 .plat__prix__valid .fa-circle-check {
   color: white;
   font-size: 1.4rem;
+  margin: 5rem;
 }
 .plat__titre {
   width: 82%;
@@ -504,7 +504,7 @@ footer a {
   white-space: nowrap;
 }
 .plat:hover .plat__prix {
-  transform: translateX(0px);
+  width: 121px;
 }
 .plat:hover .plat__titre {
   width: 60%;

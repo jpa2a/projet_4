@@ -105,11 +105,11 @@ a{
 
    /* Bouton like */
 
-   .heart--liked{
-    font-size: 25px;
-    color: transparent;
-    background-clip: text;
-    background-image: linear-gradient(193deg, $primaryColor -11.44%, $secondaryColor 123.93%);
+.heart--liked{
+font-size: 25px;
+color: transparent;
+background-clip: text;
+background-image: linear-gradient(193deg, $primaryColor -11.44%, $secondaryColor 123.93%);
 }
 .heart--notliked{
     font-size: 25px;
@@ -125,12 +125,14 @@ a{
 }
 .heart:hover .liked{
     animation: heart--liked 200ms both;
+
 }
 .heart .liked{
-    animation: heart--notliked 200ms both;
+   animation: heart--notliked 200ms both;
+
 }
 .heart:hover .notliked{
-    animation: heart--notliked 200ms both;
+   animation: heart--notliked 200ms both;
 }
 
 
@@ -144,6 +146,8 @@ a{
     opacity: 0;
 
 }
+
+
 @keyframes heart--liked {
     0% {
         opacity: 0;
