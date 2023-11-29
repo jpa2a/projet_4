@@ -54,5 +54,13 @@ header{
             margin-left: 0px;
             color: $backgroundColor2;
         }
+        & input{
+            border: none; 
+            outline: none;
+            font-size: 1rem;
+            width: 110px;
+            background-color: $backgroundColor3;
+        }
     }
+    
 }
